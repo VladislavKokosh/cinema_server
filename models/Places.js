@@ -5,7 +5,7 @@ const placeSchema = new Schema({
     seats: [{
         row: Number,
         place: Number,
-        user: String
+        id_user: {type: Schema.ObjectId, ref: "User"}
     }]
 },
 {
