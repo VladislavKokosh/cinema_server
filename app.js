@@ -1,25 +1,19 @@
-const express = require('express')
-const config = require('config')
 const mongoose = require('mongoose')
-
+const express = require('express')
 const app = express()
+const config = require('config')
+const server = require('http').createServer(app);
+const port = require('./config/server').port;
 
-app.use('/api/auth', require('./routes/auth_routes'))
 
-const PORT = config.get('port') || 5000
 
-async function start () {
-    try{
-        await mongoose.connect(config.get('mongoURL'), {
-            useNewUrlParser: true,
-            useUnifiedTopology: true,
-            useCreateIndex: true
-        })
-        app.listen(5000, () => console.log(`Server start on port ${PORT}`))
-    } catch (err) {
-        console.log('Server Error', err.message);
-        process.exit(1)
-    }
-}
 
-start()
+require('./models/Films')
+require('./models/Halls')
+require('./models/Places')
+require('./models/Sessions')
+require('./models/Users')
+
+app.use('/',require('./routes/index'));
+
+server.listen(port);

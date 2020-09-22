@@ -1,4 +1,0 @@
-{
-    "port": 5000,
-    "mongoURL": "mongodb+srv://vlad:1234@cluster0.panbw.mongodb.net/app?retryWrites=true&w=majority"
-}
