@@ -1,7 +1,6 @@
 const {Schema, model} = require('mongoose')
 
 const hallSchema = new Schema({
-    id: Number,
     title: String,
     seats: [{
         row: Number,
@@ -13,4 +12,4 @@ const hallSchema = new Schema({
     versionKey: false
 })
 
-module.exports = model('Films', hallSchema)
+module.exports = model('Hall', hallSchema)

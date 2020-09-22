@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose')
 
 const placeSchema = new Schema({
-    id: {type: Schema.ObjectId, ref: "Session"},
+    id_session: {type: Schema.ObjectId, ref: "Session"},
     seats: [{
         row: Number,
         place: Number,
@@ -12,4 +12,4 @@ const placeSchema = new Schema({
     versionKey: false
 })
 
-module.exports = model('Places', placeSchema)
+module.exports = model('Place', placeSchema)

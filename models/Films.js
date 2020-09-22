@@ -10,4 +10,4 @@ const filmSchema = new Schema({
     versionKey: false
 })
 
-module.exports = model('Films', filmSchema)
+module.exports = model('Film', filmSchema)

@@ -5,4 +5,4 @@ const schema = new Schema({
     password: {type: String, required: true}
 })
 
-module.exports = model('Users', schema)
+module.exports = model('User', schema)
