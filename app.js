@@ -7,7 +7,7 @@ const port = require('./config/server').port;
 
 
 
-
+require('./utils/dataBase')
 require('./models/Films')
 require('./models/Halls')
 require('./models/Places')
