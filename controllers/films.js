@@ -1,6 +1,16 @@
 const mongoose = require('mongoose');
 Film = mongoose.model('Film')
 
+async function listFilm(req, res) {
+    await Film.find()
+      .then(films => res.send(films))
+      .catch(error => {
+        res.status(500).send({
+          message: error.message
+        });
+      });
+  };
+
 async function addFilm(req, res) {
     const newFilm = await new Film(req.body);
     newFilm.save()
@@ -14,5 +24,6 @@ async function addFilm(req, res) {
 };
 
 module.exports = {
+    listFilm,
     addFilm
 }
