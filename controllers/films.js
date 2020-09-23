@@ -23,7 +23,19 @@ async function addFilm(req, res) {
       });
 };
 
+async function searchFilm(req, res) {
+    await Film.findById(req.params.id)
+      .then(film => res.send(film))
+      .catch(error => {
+        res.status(500).send({
+          message: error.message
+        });
+        res.send(error);
+      });
+  };
+
 module.exports = {
     listFilm,
-    addFilm
+    addFilm,
+    searchFilm
 }
