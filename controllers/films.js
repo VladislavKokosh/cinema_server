@@ -9,7 +9,7 @@ async function listFilm(req, res) {
           message: error.message
         });
       });
-  };
+};
 
 async function addFilm(req, res) {
     const newFilm = await new Film(req.body);
@@ -32,7 +32,7 @@ async function searchFilm(req, res) {
         });
         res.send(error);
       });
-  };
+};
 
 module.exports = {
     listFilm,
