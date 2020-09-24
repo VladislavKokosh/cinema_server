@@ -5,4 +5,7 @@ router.route("/")
     .get(placeController.listPlace)
     .post(placeController.addPlace)
 
+router.route("/:id")
+    .get(placeController.placesBySessionId)
+
 module.exports = router;
