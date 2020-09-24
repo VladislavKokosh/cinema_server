@@ -6,6 +6,6 @@ router.route("/")
     .post(sessionController.addSession)
 
 router.route("/:id")
-    .get(sessionController.searchSession)
+    .get(sessionController.sessionByFilm)
 
 module.exports = router;
