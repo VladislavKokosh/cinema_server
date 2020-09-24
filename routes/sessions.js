@@ -6,6 +6,10 @@ router.route("/")
     .post(sessionController.addSession)
 
 router.route("/:id")
+    .get(sessionController.sessionById)
+
+router.route("/byFilm/:id")
     .get(sessionController.sessionByFilm)
+
 
 module.exports = router;

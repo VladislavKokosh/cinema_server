@@ -23,6 +23,16 @@ async function addSession(req, res) {
         })
 }
 
+async function sessionById(req, res) {
+    await Session.findById(req.params.id)
+      .then(session => res.send(session))
+      .catch(error => {
+        res.status(500).send({
+          message: error.message
+        });
+        res.send(error);
+      });
+}
 
 async function sessionByFilm(req, res) {
     await Session.find({id_film: req.params.id})
@@ -38,5 +48,6 @@ async function sessionByFilm(req, res) {
 module.exports = {
     listSession,
     addSession,
+    sessionById,
     sessionByFilm
 }
