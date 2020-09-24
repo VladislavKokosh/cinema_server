@@ -8,4 +8,4 @@ router.route("/")
 router.route("/:id")
     .get(filmController.searchFilm)
 
-module.exports = router;
+module.exports = router

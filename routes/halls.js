@@ -8,4 +8,4 @@ router.route("/")
 router.route("/:id")
     .get(hallController.hallById)
 
-module.exports = router;
+module.exports = router

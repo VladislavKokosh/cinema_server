@@ -8,4 +8,4 @@ router.route("/")
 router.route("/:id")
     .get(placeController.placesBySessionId)
 
-module.exports = router;
+module.exports = router

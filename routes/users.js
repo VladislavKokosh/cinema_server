@@ -5,4 +5,4 @@ router.route("/")
     .get(usersController.listUser)
     .post(usersController.addUser)
 
-module.exports = router;
+module.exports = router

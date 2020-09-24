@@ -8,7 +8,7 @@ async function listHall(req, res) {
         res.status(500).send({
           message: error.message
         });
-      });
+    });
 };
 
 
@@ -17,11 +17,11 @@ async function addHall(req, res) {
     newHall.save()
         .then(hall => res.send(hall))
         .catch(error => {
-            res.status(500).send({
-                message: error.message
-            })
-            res.send(error)
+        res.status(500).send({
+            message: error.message
         })
+        res.send(error)
+    })
 }
 
 async function hallById(req, res) {
@@ -32,7 +32,7 @@ async function hallById(req, res) {
           message: error.message
         });
         res.send(error);
-      });
+    });
 }
 
 module.exports = {

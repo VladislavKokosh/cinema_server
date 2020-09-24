@@ -12,4 +12,4 @@ router.route("/byFilm/:id")
     .get(sessionController.sessionByFilm)
 
 
-module.exports = router;
+module.exports = router
