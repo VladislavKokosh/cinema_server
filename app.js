@@ -17,6 +17,7 @@ require('./models/Halls')
 require('./models/Places')
 require('./models/Sessions')
 require('./models/Users')
+require('./models/SelectedPlaces')
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
