@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-Place = mongoose.model('Place')
+Place = mongoose.model('Place');
+const deleteBoughtSeats = require('./selectedPlaces').deleteBoughtsSeats
 
 async function listPlace(req, res) {
     await Place.find()
@@ -8,18 +9,6 @@ async function listPlace(req, res) {
         res.status(500).send({
             message: error.message
         });
-    });
-};
-
-async function addPlace(req, res) {
-    const newPlace = await new Place(req.body);
-    newPlace.save()
-        .then(place => res.send(place))
-        .catch(error => {
-        res.status(500).send({
-            message: error.message
-        });
-        res.send(error);
     });
 };
 
@@ -34,9 +23,30 @@ async function placesBySessionId(req, res) {
     });
 }
 
+async function addBoughtSeat(req, res) {
+  const newBoughtSeat = await new Place(req.body);
+  newBoughtSeat.save()
+    .then(boughtSeat => {
+      deleteBoughtSeats(
+        req.body.id_session,
+        req.body.row,
+        req.body.place,
+        req.body.cost,
+        req.body.id_user
+      );
+      res.send(boughtSeat)
+    })
+    .catch(error => {
+      res.status(500).send({
+        message: error.message
+      });
+      res.send(error);
+    });
+};
+
 
 module.exports = {
     listPlace,
-    addPlace,
-    placesBySessionId
+    placesBySessionId,
+    addBoughtSeat
 }

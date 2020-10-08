@@ -3,7 +3,7 @@ const placeController = require('../controllers/places');
 
 router.route("/")
     .get(placeController.listPlace)
-    .post(placeController.addPlace)
+    .post(placeController.addBoughtSeat)
 
 router.route("/:id")
     .get(placeController.placesBySessionId)

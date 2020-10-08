@@ -58,7 +58,22 @@ router.post(
                 message: 'Некорректная данные для входе'
             })
         }
-       
+        
+        const {email, password} = req.body
+
+        const user = await User.findOne({ email })
+
+        if(!user) {
+            return res.status(400).json({message: 'Пользователь не найден'})
+        }
+
+        const isMatch = await crypt.compare(password, user.password)
+
+        if(!isMatch) {
+            return res.status(400).json({message: 'Неверный пароль'})
+        }
+
+        фыв
 
 
     } catch (err) {
