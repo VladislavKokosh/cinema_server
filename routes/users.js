@@ -1,8 +1,15 @@
 const router = require('express').Router();
-const usersController = require('../controllers/users');
+const userController = require('../controllers/users');
+const passport = require('passport');
 
-router.route("/")
-    .get(usersController.listUser)
-    .post(usersController.addUser)
 
-module.exports = router
+router.route("/signup")
+  .post(userController.signup)
+
+router.route("/login")
+  .post(userController.login)
+
+router.route('/user')
+  .post(passport.authenticate('jwt', { session: false }), userController.currentUser);
+
+module.exports = router;
