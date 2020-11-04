@@ -7,7 +7,7 @@ async function signup(req, res) {
   if (!req.body.login || !req.body.password) {
     res.json({ message: 'Please pass login and password.' });
   } else {
-    const user = await User.findOne({ username: req.body.login });
+    const user = await User.findOne({ login: req.body.login });
     if (user) {
       return res.status(500).json({ error: "User already exists." });
     } else {
@@ -28,18 +28,18 @@ async function signup(req, res) {
 };
 
 async function login(req, res) {
-  const user = await User.findOne({ username: req.body.login });
+  const user = await User.findOne({ login: req.body.login });
   if (!user || !service.isValidPassword(user, req.body.password)) {
     res.status(401).send({ message: 'Wrong username or password.' });
   } else {
     req.body.token = service.createToken(user.id);
-    res.json({ token: req.body.token, username: req.body.login, id: user.id });
+    res.json({ token: req.body.token, login: req.body.login, id: user.id });
   }
 }
 
 async function currentUser(req, res) {
   await User.findById(req.user.id)
-    .then(user => res.send({id: user.id, username: user.login}))
+    .then(user => res.send({id: user.id, login: user.login}))
     .catch(error => {
       res.status(500).send({
         message: error.message
